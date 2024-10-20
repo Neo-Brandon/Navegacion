@@ -1,4 +1,4 @@
-package com.example.navegacion.views
+package com.example.navigate.views
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.*
@@ -18,16 +18,14 @@ import androidx.compose.material3.Text
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.navegacion.components.ActionButton
 
-var value1: String? = null
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-
-fun DetailsView(navController: NavController, value: String?) {
+fun NewView(navController: NavController, value: String?) {
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
-                title = { Text("Detail View") },
+                title = { Text("New View") },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     containerColor = Color.Blue
                 ),
@@ -50,27 +48,20 @@ fun DetailsView(navController: NavController, value: String?) {
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = "Valor recibido: ${value ?: "No hay valor"}")
-            value1=value
+            Text(text = "Valor recibido de la vista Details: ${value ?: "No hay valor"}")
             Spacer(modifier = Modifier.height(16.dp))
-            ContentDetailsView(navController, value)
+            ContentNewView()
         }
     }
 }
+@Preview(showBackground = true)
 @Composable
-fun ContentDetailsView(navController: NavController, value: String?) {
+fun ContentNewView() {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Vista Detalle")
-
-        Text(text = "Valor a enviar: $value")
-
-        // Botón que navega a DetailsView
-        Button(onClick = { navController.navigate("new/$value1") }) {
-            Text(text = "Ir a New View")
-        }
+        Text(text = "Vista Nueva")
     }
 }

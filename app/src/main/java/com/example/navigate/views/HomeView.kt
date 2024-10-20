@@ -22,6 +22,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.navegacion.components.ActionButton
 import com.example.navegacion.components.TitleBar
+import com.example.navigate.views.NewView
 
 //Navegacion
 @Preview(showBackground = true)
@@ -49,6 +50,9 @@ fun HomeView() {
             composable("home") { ContentHomeView(navController) }
             composable("details/{value}") { backStackEntry ->
                 DetailsView(navController, backStackEntry.arguments?.getString("value"))
+            }
+            composable("new/{value}") { backStackEntry ->
+                NewView(navController, backStackEntry.arguments?.getString("value"))
             }
         }
     }
